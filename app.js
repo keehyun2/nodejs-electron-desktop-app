@@ -30,4 +30,6 @@ app.once('ready', () => {
   window.once('ready-to-show', () => {
     window.show()
   })
+
+  //require('electron-reload')(__dirname);
 })

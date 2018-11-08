@@ -1,4 +1,4 @@
-html, body, .container-fluid {
+html, body {
   background-color: #D6D8DC;
 }
 
@@ -6,14 +6,3 @@ html, body, .container-fluid {
   font-size: 16px;
 }
 
-.hash-output {
-  color: #575B5E;
-  font-size: 16px;
-  letter-spacing: 2px;
-  white-space: pre-wrap;
-}
-
-.hash-heading {
-  color: #575B5E;
-  font-weight: normal;
-}
