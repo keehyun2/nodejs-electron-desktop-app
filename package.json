@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-electron-desktop-app",
+  "version": "1.0.0",
+  "description": "test nodejs desktop app",
+  "repository": "keehyun2/nodejs-electron-desktop-app",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron app.js",
+    "build": "electron-packager ."
+  },
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^3.0.4",
+    "electron-packager": "^12.2.0"
+  }
+}
