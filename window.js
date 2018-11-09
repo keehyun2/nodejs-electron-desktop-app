@@ -2,7 +2,8 @@ var app = new Vue({
 	el : '#app',
 	data : {// 초기 데이터 
 		keyword : "",
-		status : ""
+		status : "",
+		productList : []
 	},
 	watch: {
 		showCnt: function(obj) {
@@ -22,13 +23,13 @@ var app = new Vue({
 	methods : {
 		search : function(e){ 
 			condition = {
-				avcMode : true
+				keyword : this.keyword
 			}; 
-			
-			axios.post('app/approvSerarch.do',condition)
+			//console.log(app.keyword)
+			axios.get('http://54.180.31.161:9902/crawl',{params : condition })
 			.then(function(response) {
-				app.totalList = response.data.totalList;
-				app.totalListCnt = response.data.totalCnt;
+				// console.log(response.data);
+				this.productList = response.data;
 			})
 			.catch(function(e) {
 				console.log(e);
