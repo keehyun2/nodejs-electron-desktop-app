@@ -1,7 +1,7 @@
 var app = new Vue({
 	el : '#app',
 	data : {// 초기 데이터 
-		keyword : "",
+		keyword : "진공포장기",
 		status : "",
 		productList : []
 	},

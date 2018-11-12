@@ -1,8 +1,12 @@
 html, body {
-  background-color: #D6D8DC;
+	background-color: #D6D8DC;
 }
 
 .text-input {
-  font-size: 16px;
+	font-size: 16px;
+}
+
+.prodImg {
+	width: 100%;
 }
 
