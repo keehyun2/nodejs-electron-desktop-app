@@ -28,8 +28,8 @@ var app = new Vue({
 			//console.log(app.keyword)
 			axios.get('http://54.180.31.161:9902/crawl',{params : condition })
 			.then(function(response) {
-				// console.log(response.data);
-				this.productList = response.data;
+				console.log(response.data);
+				app.productList = response.data;
 			})
 			.catch(function(e) {
 				console.log(e);
