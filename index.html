@@ -3,15 +3,11 @@
 
 <head>
 	<meta charset="utf-8">
-
 	<title>Product List</title>
-
-	<!-- Stylesheets -->
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="./styles.css">
-	
-	
-	<!-- Scripts -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 	<script>
 		delete module.exports
 	</script>
@@ -20,42 +16,56 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/black/pace-theme-barber-shop.min.css" rel="stylesheet" />
 	<link rel="stylesheet" href="./pace.theme.css">
+	
+	<link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-	<br>
 	<div id="app" class="container-fluid">
 		<!-- Input row -->
 		<div class="row">
 			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 ">
-				<input v-model="keyword" v-on:keyup.enter="search" class="form-control text-input" placeholder="keyword">
+				<input v-model="keyword" v-on:keyup.enter="search" class="" placeholder="keyword"> 
+				<input v-model="excludeWord" v-on:keyup.enter="search" class="" placeholder="제외단어"> 
+				{{recommendedText}}
 			</div>
+			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-truncate" v-bind:title="recommendedPrice" >
+				{{recommendedPrice}}
+			</div>
+		</div>
+		<div class="row prod"  style="margin: 5px 0 0 0;">
 			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-				{{status}}
+				<i class="fas fa-caret-right btn" v-on:click="console.log(1)"></i>
+				<img class="prodImg" >
+			</div>
+			<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-truncate" >
+				zxczxczxczxc<br>
+				레이아웃 테스트
 			</div>
 		</div>
 		<template v-for="(item, index) in productList">
-			<div class="row" >
+			<div class="row prod"  style="margin: 5px 0 0 0;">
 				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-					<!-- <img class="prodImg" v-bind:src="item.imgUrl" > -->
+					<i class="fas fa-caret-right btn"></i>
+					<img class="prodImg rounded " v-bind:src="item.imgUrl" >
 				</div>
-				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-truncate">
-					{{item.tit}}
-					<p class="font-weight-bold">{{item.price}}</p>
+				<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 text-truncate" v-bind:title="item.tit">
+					{{item.tit}}<br>
+					<strong>{{item.price}}</strong> 원<br>
 				</div>
 			</div>
-			<template v-for="(item, index) in item.groups">
-				<div class="row" >
+			<template v-for="(grpItem, index) in item.groups">
+				<div class="row prod" >
 					<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 						
 					</div>
 					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-						<!-- <img class="prodImg" v-bind:src="item.imgUrl" > -->
+						<img class="prodImg rounded " v-bind:src="grpItem.imgUrl" >
 					</div>
-					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-						<div class="text-truncate">{{item.tit}}</div>
-						<p class="font-weight-bold">{{item.price}}</p>
-						상위 이미지와 차이율 : {{item.imgMinDiff.toFixed(2)}} %
+					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 text-truncate" v-bind:title="grpItem.tit">
+						{{grpItem.tit}}<br>
+						<strong>{{grpItem.price}}</strong> 원<br>
+						이미지 유사율 : {{grpItem.imgSimilarity.toFixed(2)}} % / 텍스트 유사율 : {{grpItem.txtSimilarity.toFixed(2)}} %
 					</div>
 				</div>
 			</template>
