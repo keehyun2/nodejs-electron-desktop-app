@@ -5,7 +5,8 @@ var app = new Vue({
 		excludeWord : "",
 		recommendedPrice: "",
 		recommendedText: "",
-		productList : []
+		productList : [],
+		isTiles : false
 	},
 	watch: {
 		showCnt: function(obj) {
