@@ -1,3 +1,40 @@
+Vue.component('item', {
+	template: '#item-template',
+	props: {
+	  model: Object
+	},
+	data: function () {
+	  return {
+		open: false
+	  }
+	},
+	computed: {
+	  isFolder: function () {
+		return this.model.tit &&
+		  this.model.tit.length
+	  }
+	},
+	methods: {
+	  toggle: function () {
+		if (this.isFolder) {
+		  this.open = !this.open
+		}
+	  },
+	  changeType: function () {
+		if (!this.isFolder) {
+		  Vue.set(this.model, 'tit', [])
+		  this.addChild()
+		  this.open = true
+		}
+	  },
+	  addChild: function () {
+		this.model.tit.push({
+		  name: 'new stuff'
+		})
+	  }
+	}
+})
+
 var app = new Vue({
 	el : '#app',
 	data : {// 초기 데이터 
@@ -44,3 +81,4 @@ var app = new Vue({
 		}
 	}
 })
+
